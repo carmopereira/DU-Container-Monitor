@@ -2,12 +2,12 @@
 
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
 
-<b>Overview</b>
-This code is destined to Dual Universe game.
-This is a Container monitor for pure and ore materials. It can be used to monitor container percentages and it readouts:
-
-This HUD was designed for a Large Transparent Screen. Each screen can gather 20 materials. It uses a Zone detector to turn up every board for optimal CPU usage.
-
+<b>Overview</b><br>
+This code is destined to Dual Universe game.<br>
+This is a Container monitor for pure and ore materials. It can be used to monitor container percentages and it readouts. It was design to have a Container Hub element side each item.<br>
+<br>
+This HUD was designed for a Large Transparent Screen. Each screen can gather 20 materials. It uses a Zone detector to turn up every board for optimal CPU usage.<br>
+<br>
 <b>HOW TO SETUP HUD:</b>
 1. Place a Databank
 2. Place a Relay
@@ -17,7 +17,7 @@ This HUD was designed for a Large Transparent Screen. Each screen can gather 20 
 7. Deploy a Zone Detector and connect it to the Relay
 6. Deploy Doors (optional)
 
-<b>CONTAINER BOARD:</b>
+<b>CONTAINER BOARD:</b><br>
 Slot1: DB (databank)
 Slot2: Material name in caps or SCREEN (optional)
 Slot3 - slot10: Material name in caps
@@ -28,7 +28,7 @@ Slot3 - slot10: Material name in caps
 3. Connect containers/Hub Containers to board
 4. Edit board parameters (setup refresh rate in seconds, rename each slot to match ore/pure name. Ex.: "HEMATITE", "BAUXITE", "IRON"
 
-<b>MAIN BOARD:</b>
+<b>MAIN BOARD:</b><br>
 Slot1: DB (databank)
 Slot2: SCREEN
 Slot3: DOOR1 (optional)
