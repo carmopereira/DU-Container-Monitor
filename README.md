@@ -2,7 +2,7 @@
 
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
 
-<b>Overview</b><br>
+<b>OVERVIEW</b><br>
 This code is destined to Dual Universe game.<br>
 This is a Container monitor for pure and ore materials. It can be used to monitor container percentages and it readouts. It was design to have a Container Hub element side each item.<br>
 <br>
