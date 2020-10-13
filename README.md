@@ -40,3 +40,5 @@ INSTRUCTIONS:
 
 Credits
 carmopereira
+
+NOTE: Any issue, please contact carmo#1590 at Discord
