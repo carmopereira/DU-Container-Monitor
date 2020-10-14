@@ -11,7 +11,7 @@ This is a Container monitor for pure and ore materials. It can be used to monito
 <br><br>
 This HUD was designed for a Large Transparent Screen. Each screen can gather 20 materials. It uses a Zone detector to turn up every board for optimal CPU usage.<br><br>
 It has definition for current ore/pure types: Bauxite/Aluminium, Hematite/Iron, Quartz/Silicon, Coal/Carbon, Pyrite/Sulfur, Petalite/Lithium, Acanthite/Silver, Malachite/Copper, Limestone/Calcium and Natron/Sodium  [More to come in a few days]
-<br><br>
+<br>
 <h3>HOW TO SETUP HUD:</h3>
 1. Place a Databank<br>
 2. Place a Relay<br>
@@ -24,9 +24,9 @@ It has definition for current ore/pure types: Bauxite/Aluminium, Hematite/Iron, 
 -----------------------------
 
 <h1>CONTAINER BOARD:</h1>
-Slot1: DB (databank)
-Slot2: Material name in caps or SCREEN (optional)
-Slot2 - slot10: Material name in caps
+Slot1: DB (databank)<br>
+Slot2: Material name in caps or SCREEN (optional)<br>
+Slot2 - slot10: Material name in caps<br>
 
 <h3>INSTRUCTIONS:</h3>
 1. Connect DB<br>
