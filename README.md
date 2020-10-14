@@ -2,8 +2,7 @@
 
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
 
-<h1>OVERVIEW</h1><br>
-<br>
+<h1>OVERVIEW</h1>
 Container board v1.1 __ 14/10/2020<br>
 Main board v1.0 __ 14/10/2020<br>
 <br>
@@ -13,7 +12,7 @@ This is a Container monitor for pure and ore materials. It can be used to monito
 This HUD was designed for a Large Transparent Screen. Each screen can gather 20 materials. It uses a Zone detector to turn up every board for optimal CPU usage.<br><br>
 It has definition for current ore/pure types: Bauxite/Aluminium, Hematite/Iron, Quartz/Silicon, Coal/Carbon, Pyrite/Sulfur, Petalite/Lithium, Acanthite/Silver, Malachite/Copper, Limestone/Calcium and Natron/Sodium  [More to come in a few days]
 <br><br>
-<b>HOW TO SETUP HUD:</b>
+<h2>HOW TO SETUP HUD:</h2>
 1. Place a Databank
 2. Place a Relay
 3. Place a Transparent Screen L or similar
@@ -24,12 +23,12 @@ It has definition for current ore/pure types: Bauxite/Aluminium, Hematite/Iron, 
 
 -----------------------------
 
-<b>CONTAINER BOARD:</b><br>
+<h1>CONTAINER BOARD:</h1>
 Slot1: DB (databank)
 Slot2: Material name in caps or SCREEN (optional)
 Slot2 - slot10: Material name in caps
 
-<b>INSTRUCTIONS:</b>
+<h2>INSTRUCTIONS:</h2>
 1. Connect DB
 2. Connect Relay to board
 3. Connect containers/Hub Containers to board (remember the order of the materials you connect)
@@ -38,13 +37,13 @@ Slot2 - slot10: Material name in caps
 
 -----------------------------
 
-<b>MAIN BOARD:</b><br>
+<h1>MAIN BOARD:</h1>
 Slot1: DB (databank)
 Slot2: SCREEN (large transparent screen or similar)
 Slot3: DOOR1 (optional)
 Slot4: DOOR2 (optional)
 
-<b>INSTRUCTIONS:</b>
+<h2>INSTRUCTIONS:</h2>
 1. Connect DB
 2. Connect SCREEN_A
 3. Connect Relay to board
@@ -54,7 +53,7 @@ Slot4: DOOR2 (optional)
 
 -----------------------------
 
-Credits
+<h1>Credits</h1>
 carmopereira
 
-NOTE: Any issue, please contact carmo#1590 at Discord
+<b>NOTE:</b> Any issue, please contact carmo#1590 at Discord
