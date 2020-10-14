@@ -11,6 +11,7 @@ This code is destined to Dual Universe game.<br>
 This is a Container monitor for pure and ore materials. It can be used to monitor container percentages and it readouts. It was design to have a Container Hub element side each item.<br>
 <br>
 This HUD was designed for a Large Transparent Screen. Each screen can gather 20 materials. It uses a Zone detector to turn up every board for optimal CPU usage.<br>
+It has definition for current ore/pure types: Bauxite/Aluminium, Hematite/Iron, Quartz/Silicon, Coal/Carbon, Pyrite/Sulfur, Petalite/Lithium, Acanthite/Silver, Malachite/Copper, Limestone/Calcium and Natron/Sodium  [More to come in a few days]
 <br>
 <b>HOW TO SETUP HUD:</b>
 1. Place a Databank
