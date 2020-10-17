@@ -1,0 +1,47 @@
+ <div style="width=100vw"> <div style="margin-top: 0px;padding: 0px;width: 100vw;display: inline-block;"> <style> 
+.table {background-color:none; height:100vh; margin:auto; padding:0; position:relative; width:98vw} 
+.column_left {background-color:blue; position:absolute; left:0; height:100%; width:30vw} 
+.column_middle {background-color:green; position:absolute; left:34vw; height:100%; width:30vw} 
+.column_right {background-color:blue; position:absolute; right:0; height:100%; width:30vw} 
+.row {background-color:none; height:21vh; border:0px grey solid; padding-left:0; width:99%; text-align:center; vertical-align:top} 
+.name {background-color:none; padding-left:0px; font-size: 4vh; display:inline-block; width:100%} 
+</style> 
+<div class="table"> 
+	<div class="column_left"> 
+        <div class="row"><div class="name">HEMATITE</div></div> 
+        <div class="row"><div class="name">BAUXITE</div></div> 
+        <div class="row"><div class="name">COAL</div></div>
+        <div class="row"><div class="name">QUARTZ</div></div>
+        <div class="row"><div class="name">LIMESTONE</div></div>
+        <div class="row"><div class="name">ACANTHITE</div></div>
+        <div class="row"><div class="name">MALACHITE</div></div>
+        <div class="row"><div class="name">NATRON</div></div>
+        <div class="row"><div class="name">PYRITE</div></div>
+        <div class="row"><div class="name">PETALITE</div></div> 
+    </div>
+    <div class="column_middle">
+        <div class="row"><div class="name">IRON</div></div>
+        <div class="row"><div class="name">ALUMINIUM</div></div>
+        <div class="row"><div class="name">CARBON</div></div> 
+        <div class="row"><div class="name">SILICON</div></div>
+        <div class="row"><div class="name">CALCIUM</div></div>
+        <div class="row"><div class="name">SILVER</div></div>
+        <div class="row"><div class="name">COPPER</div></div>
+        <div class="row"><div class="name">SODIUM</div></div>
+        <div class="row"><div class="name">SULFUR</div></div>
+        <div class="row"><div class="name">LITHIUM</div></div>
+    </div>
+    <div class="column_right">
+        <div class="row"><div class="name">IRON</div></div>
+        <div class="row"><div class="name">ALUMINIUM</div></div>
+        <div class="row"><div class="name">CARBON</div></div> 
+        <div class="row"><div class="name">SILICON</div></div>
+        <div class="row"><div class="name">CALCIUM</div></div>
+        <div class="row"><div class="name">SILVER</div></div>
+        <div class="row"><div class="name">COPPER</div></div>
+        <div class="row"><div class="name">SODIUM</div></div>
+        <div class="row"><div class="name">SULFUR</div></div>
+        <div class="row"><div class="name">LITHIUM</div></div>
+    </div>
+</div>
+</div></div>
