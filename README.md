@@ -28,17 +28,17 @@ Slot4: DOOR2 (optional)
 4. Copy minified code from Main Board file, and past it under advanced options on board options
 5. Edit board parameters (setup refresh rate in seconds, containers default space, percentage min and max for red and green incicators)
 6. For every ContainerHub you will need to rename it to: CH_1L_ACANTHITE
-
-Label:
-CH stands for ContainerHub
-1 for quantity of containers
-L for size of the container
-ACANTHITE for material type
-
-Change everything accordingly except CH.
-
-Material name always in CAPS. List: HEMATITE, IRON, BAUXITE, ALUMINIUM, COAL ,CARBON ,QUARTZ ,SILICON ,LIMESTONE ,CALCIUM ,ACANTHITE ,SILVER ,MALACHITE ,COPPER ,NATRON, SODIUM, PYRITE, SULFUR, PETALITE, LITHIUM, CHROMITE, CHROMIUM, GARNIERITE, NICKEL, GOLDNUGGETS, GOLD, RHODONITE, MANGANESE
-
+<br>
+Label:<br>
+CH stands for ContainerHub<br>
+1 for quantity of containers<br>
+L for size of the container<br>
+ACANTHITE for material type<br>
+<br>
+Change everything accordingly except CH.<br>
+<br>
+Material name always in CAPS. List: HEMATITE, IRON, BAUXITE, ALUMINIUM, COAL ,CARBON ,QUARTZ ,SILICON ,LIMESTONE ,CALCIUM ,ACANTHITE ,SILVER ,MALACHITE ,COPPER ,NATRON, SODIUM, PYRITE, SULFUR, PETALITE, LITHIUM, CHROMITE, CHROMIUM, GARNIERITE, NICKEL, GOLDNUGGETS, GOLD, RHODONITE, MANGANESE<br>
+<br>
 -----------------------------
 
 <h1>Bonus Screen</h1>
