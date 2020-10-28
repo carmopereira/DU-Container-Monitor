@@ -30,19 +30,33 @@ Slot4: DOOR2 (optional)
 5. Edit board parameters (setup refresh rate in seconds, containers default space, percentage min and max for red and green incicators)
 6. For every ContainerHub you will need to rename it to: CH_1L_ACANTHITE
 <br>
-Label:<br>
+<b>Label:</b><br>
 CH stands for ContainerHub<br>
 1 for quantity of containers<br>
 L for size of the container<br>
 ACANTHITE for material type<br>
 <br>
-Change everything accordingly except CH.<br>
+Change everything accordingly except CH.<br>Ex.: CH_3S_CARBON (you have 3 small containers with carbon), CH_6L_IRON (you have 6 large containers with iron)
 <br>
 Material name always in CAPS. List: HEMATITE, IRON, BAUXITE, ALUMINIUM, COAL ,CARBON ,QUARTZ ,SILICON ,LIMESTONE ,CALCIUM ,ACANTHITE ,SILVER ,MALACHITE ,COPPER ,NATRON, SODIUM, PYRITE, SULFUR, PETALITE, LITHIUM, CHROMITE, CHROMIUM, GARNIERITE, NICKEL, GOLDNUGGETS, GOLD, RHODONITE, MANGANESE<br>
 <br>
 
+-----------------------------
 
-[NOTE]
+<b>CUSTOM ORDER:</b><br>
+
+At system start() you will find two variables. 
+local SCREENA = {m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15,m16,m17,m18,m19,m20}
+local SCREENB = {m21,m22,m23,m24,m25,m26,m27,m28}
+
+This will define the order that materials are placed on screen.
+Please use it wisely.
+
+<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/material_list.jpg" />
+
+-----------------------------
+<b>EXTRA:</b><br>
+
 If you want you could format first screen with 4 columns. You could use this setting if you are not planning to use any container hub over the screen. Just uncheck "UseContainerHub" at parameters, and reload board.
 
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen_nohubs.jpg" />
