@@ -9,9 +9,10 @@ This is a Container monitor for pure and ore materials. It can be used to monito
 This HUD was designed for a Large Transparent Screen(or two). Each screen can gather 20 materials. It uses a Zone detector to turn up every board for optimal CPU usage.<br>
 <br>
 <b>HOW TO SETUP HUD:</b>
-1. Place a Relay
+
+1. Place Main board
 2. Place a Transparent Screen L or similar
-3. Place Main board
+3. Place a Relay
 4. Deploy a Zone Detector and connect it to the Relay
 
 -----------------------------
