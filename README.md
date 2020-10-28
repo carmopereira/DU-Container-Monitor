@@ -40,6 +40,13 @@ Change everything accordingly except CH.<br>
 <br>
 Material name always in CAPS. List: HEMATITE, IRON, BAUXITE, ALUMINIUM, COAL ,CARBON ,QUARTZ ,SILICON ,LIMESTONE ,CALCIUM ,ACANTHITE ,SILVER ,MALACHITE ,COPPER ,NATRON, SODIUM, PYRITE, SULFUR, PETALITE, LITHIUM, CHROMITE, CHROMIUM, GARNIERITE, NICKEL, GOLDNUGGETS, GOLD, RHODONITE, MANGANESE<br>
 <br>
+
+
+[NOTE]
+If you want you could format first screen with 4 columns. You could use this setting if you are not planning to use any container hub over the screen. Just uncheck "UseContainerHub" at parameters, and reload board.
+
+<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen_nohubs.jpg" />
+
 -----------------------------
 
 <h1>Bonus Screen</h1>
