@@ -58,6 +58,11 @@ Please use it wisely.<br>
 <br>
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/material_list1.jpg" /><img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/material_list2.jpg" />
 
+<b>DOORS:</b><br>
+
+If you are using doors, just need to link them to the board. Name the slots DOOR1 and DOOR2.<br>
+Activate at parameters (UseDoors), and at the final function at System/start, edit the caracter names that will trigger the doors.<br>
+<br>
 -----------------------------
 <b>EXTRA:</b><br>
 
