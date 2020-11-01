@@ -27,7 +27,7 @@ Slot5: DOOR2 (optional)<br>
 <b>INSTRUCTIONS:</b>
 1. Link CORE (no need to rename slot to CORE because it will autodetect)
 2. Link SCREEN_A and SCREEN_B if needed (2nd screen is optional)
-3. Copy minified code from Main Board file, and past it under advanced options on board options.
+3. Copy minified code from Main Board file, and paste it under advanced options on board options.
 NOTE: when you copy paste the code, it will rename slot1 to CORE and slot2 to SCREEN_A
 4. Link Relay to board and detector zone or manual button for example (optional) (you can always turn the board manually)
 5. Edit board parameters (setup refresh rate in seconds, containers default space, percentage min and max for red and green incicators)
