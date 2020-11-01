@@ -1,4 +1,5 @@
 # DU-Container-Monitor
+v1.4 11Nov2020
 
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
 
