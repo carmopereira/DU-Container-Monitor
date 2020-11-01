@@ -55,7 +55,7 @@ local SCREENB = {m19,m20,m23,m24,m25,m26,m29,m30,m31,m32,m33,m34,m27,m28,m35,m36
 This will define the order that materials are placed on screen. If you need an empty space use m0. You can also use m41 for oxygen, m42 for hydrogen and m43 for warpcells<br>
 Please use it wisely.<br>
 <br>
-<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/material_list.jpg" />
+<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/material_list1.jpg" /><img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/material_list2.jpg" />
 
 -----------------------------
 <b>EXTRA:</b><br>
