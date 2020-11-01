@@ -18,12 +18,12 @@ This HUD was designed for a Large Transparent Screen(or two). Each screen can ga
 -----------------------------
 
 <b>MAIN BOARD:</b><br>
-Slot1: CORE
-Slot2: SCREEN_A
-Slot3: SCREEN_B (optional)
-Slot4: DOOR1 (optional)
-Slot5: DOOR2 (optional)
-
+Slot1: CORE<br>
+Slot2: SCREEN_A<br>
+Slot3: SCREEN_B (optional)<br>
+Slot4: DOOR1 (optional)<br>
+Slot5: DOOR2 (optional)<br>
+<br>
 <b>INSTRUCTIONS:</b>
 1. Link CORE (no need to rename slot to CORE because it will autodetect)
 2. Link SCREEN_A and SCREEN_B if needed (2nd screen is optional)
@@ -39,7 +39,7 @@ CH stands for ContainerHub<br>
 L for size of the container<br>
 ACANTHITE for material type<br>
 <br>
-Change everything accordingly except CH.<br>Ex.: CH_3S_CARBON (you have 3 small containers with carbon), CH_6L_IRON (you have 6 large containers with iron)
+Change everything accordingly except CH.<br>Ex.: CH_3S_CARBON (you have 3 small containers with carbon), CH_6L_IRON (you have 6 large containers with iron)<br>
 <br>
 Material name always in CAPS. List: HEMATITE, IRON, BAUXITE, ALUMINIUM, COAL ,CARBON ,QUARTZ ,SILICON ,LIMESTONE ,CALCIUM ,ACANTHITE ,SILVER ,MALACHITE ,COPPER ,NATRON, SODIUM, PYRITE, SULFUR, PETALITE, LITHIUM, CHROMITE, CHROMIUM, GARNIERITE, NICKEL, GOLDNUGGETS, GOLD, RHODONITE, MANGANESE, CRYOLITE, FLUORINE, COBALTITE, COBALT, KOLBECKITE, SCANDIUM, COLUMBITE, NIOBIUM, VANADINITE, VANADIUM, ILMENITE, TITANIUM, OXYGEN, HYDROGEN, WARPCELL<br>
 <br>
