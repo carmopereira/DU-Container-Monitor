@@ -62,7 +62,7 @@ Please use it wisely.<br>
 
 <b>DOORS:</b><br>
 
-If you are using doors, just need to link them to the board. Name the slots DOOR1 and DOOR2.<br>
+If you are using doors, just need to link them to the board. Name the slots DOOR1 and DOOR2 (optional).<br>
 Activate at parameters (UseDoors), and at the final function at System/start, edit the caracter names that will trigger the doors.<br>
 <br>
 -----------------------------
