@@ -29,7 +29,7 @@ Slot5: DOOR2 (optional)<br>
 1. Link CORE (no need to rename slot to CORE because it will autodetect)
 2. Link SCREEN_A and SCREEN_B if needed (2nd screen is optional)
 3. Copy minified code from Main Board file, and paste it under advanced options on board options.
-NOTE: when you copy paste the code, it will rename slot1 to CORE and slot2 to SCREEN_A
+NOTE: when you copy paste the code, it will rename slot1 to CORE and slot2 to SCREEN_A (if you are using a second screen, just neeed to rename the slot to SCREEN_B)
 4. Link Relay to board and detector zone or manual button for example (optional) (you can always turn the board manually)
 5. Edit board parameters (setup refresh rate in seconds, containers default space, percentage min and max for red and green incicators)
 6. For every ContainerHub you will need to rename it to: CH_1L_ACANTHITE
