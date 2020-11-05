@@ -86,4 +86,6 @@ This is a HTML only board. Feel free to change the names to your liking.
 Credits
 carmopereira
 
+A big thanks to Jericho :) Your help is gold
+
 NOTE: Any issue, please contact carmo#1590 at Discord
