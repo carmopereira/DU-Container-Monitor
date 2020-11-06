@@ -1,7 +1,11 @@
 # DU-Container-Monitor
-v1.4 11Nov2020
-
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
+
+
+<b>CHANGE LOG</b>
+v1.4 11 Nov 2020 - first time i remembered to create a log<br>
+<br>
+
 
 <b>OVERVIEW</b><br>
 This code is destined to Dual Universe game.<br>
@@ -89,3 +93,5 @@ carmopereira
 A big thanks to Jericho :) Your help is gold
 
 NOTE: Any issue, please contact carmo#1590 at Discord
+Channel DU_CONTAINER_HUD on DU Open Source Initiative Discord Server
+https://discord.gg/tBteJZSQxe
