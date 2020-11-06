@@ -92,6 +92,4 @@ carmopereira
 
 A big thanks to Jericho :) Your help is gold
 
-NOTE: Any issue, please contact carmo#1590 at Discord
-Channel DU_CONTAINER_HUD on DU Open Source Initiative Discord Server
-https://discord.gg/tBteJZSQxe
+NOTE: Any issue, please contact carmo#1590 at Discord or at DU_CONTAINER_HUD channel on DU Open Source Initiative Discord Server https://discord.gg/tBteJZSQxe
