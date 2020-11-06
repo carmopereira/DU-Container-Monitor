@@ -2,7 +2,7 @@
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
 
 
-<b>CHANGE LOG</b>
+<b>CHANGE LOG</b><br>
 v1.4 11 Nov 2020 - first time i remembered to create a log<br>
 <br>
 
