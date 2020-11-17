@@ -1,12 +1,6 @@
 # DU-Container-Monitor
 <img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
 
-
-<b>CHANGE LOG</b><br>
-v1.4 11 Nov 2020 - first time i remembered to create a log<br>
-<br>
-
-
 <b>OVERVIEW</b><br>
 This code is destined to Dual Universe game.<br>
 This is a Container monitor for pure and ore materials. It can be used to monitor container percentages and it readouts. It was design to have a Container Hub element side each item.<br>
@@ -84,7 +78,24 @@ If you want you could format first screen with 4 columns. You could use this set
 
 This is a HTML only board. Feel free to change the names to your liking.
 
+-----------------------------
 
+<b>CHANGE LOG</b><br>
+v1.4 11 Nov 2020 - first time i remembered to create a log<br>
+v1.7 17 Nov 2020<br>
+    Major refactoring<br>
+    Added DB for upgrade purposes (storing user configs)<br>
+    Added (L / kL / kt) readout below progress bar<br>
+    Added capability to read containers and container hubs ( C_1L_IRON or CH_1L_IRON)<br>
+    Restored old terminology to setup screen variables. Ore/Pure names instead m1,m2,m3,etc...<br>
+    Info readouts when screen is setup and no container/hub found<br>
+    Correct order for T1,T2,T3,T4 when using 2 full screens/1 without "hubsonscreen"<br>
+    Added showHudWidget variable. Please turn it to true for DEBUG purposes.<br>
+    Added capability to have 10 containers in the name. (Ex.: CH_10L_HEMATITE)<br>
+<br>
+    Thanks to: Jericho,Archaegeo,Kumare,Tricky Trixy,-CML- Schoff for all input.<br>
+<br>
+<br>
 -----------------------------
 
 Credits
