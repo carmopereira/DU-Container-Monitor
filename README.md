@@ -39,7 +39,7 @@ C stands for Container<br>
 L for size of the container<br>
 ACANTHITE for material type<br>
 <br>
-Change everything accordingly except CH or C.<br>Ex.: CH_3S_CARBON (you have 3 small containers with carbon), CH_6L_IRON (you have 6 large containers with iron), C_2M_IRON (you have 2 separate M containers with IRON<br>
+Change everything accordingly except CH or C.<br>Ex.: CH_3S_CARBON (you have 3 small containers with carbon), CH_6L_IRON (you have 6 large containers with iron), C_1M_IRON (you have 1 M containers with IRON (the number one could be omitted, like C_M_IRON)<br>
 <br>
 Material name always in CAPS. List: HEMATITE, IRON, BAUXITE, ALUMINIUM, COAL ,CARBON ,QUARTZ ,SILICON ,LIMESTONE ,CALCIUM ,ACANTHITE ,SILVER ,MALACHITE ,COPPER ,NATRON, SODIUM, PYRITE, SULFUR, PETALITE, LITHIUM, CHROMITE, CHROMIUM, GARNIERITE, NICKEL, GOLDNUGGETS, GOLD, RHODONITE, MANGANESE, CRYOLITE, FLUORINE, COBALTITE, COBALT, KOLBECKITE, SCANDIUM, COLUMBITE, NIOBIUM, VANADINITE, VANADIUM, ILMENITE, TITANIUM, OXYGEN, HYDROGEN, WARPCELL<br>
 <br>
@@ -112,6 +112,9 @@ v1.7 17 Nov 2020<br>
     Added capability to have 10 containers in the name. (Ex.: CH_10L_HEMATITE)<br>
 <br>
     Thanks to: Jericho,Archaegeo,Kumare,Tricky Trixy,-CML- Schoff for all input.<br>
+v1.8 17 Nov 2020<br>
+	Container "C_" now working as intended. You can use either C_L_IRON or C_1L_IRON (no meaning to say that the "one" container is 1.)
+	If you name 2 containers with the same ore/pure it will sum values of the two (or more)
 <br>
 <br>
 -----------------------------
