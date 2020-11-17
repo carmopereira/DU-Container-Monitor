@@ -48,7 +48,7 @@ Material name always in CAPS. List: HEMATITE, IRON, BAUXITE, ALUMINIUM, COAL ,CA
 
 <b>CUSTOM ORDER ON SCREEN:</b><br>
 <br>
-At system start() you will find two variables. <br>
+At system start() you will find two variables (SCREENA and SCREENB). <br>
 <br>
 local SCREENA = {"HEMATITE","IRON","BAUXITE","ALUMINIUM","COAL","CARBON","QUARTZ","SILICON","LIMESTONE","CALCIUM",<br> "MALACHITE","COPPER","NATRON","SODIUM","CHROMITE","CHROMIUM","ACANTHITE","SILVER","PYRITE","SULFUR"}<br>
 <br>
