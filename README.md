@@ -1,5 +1,5 @@
 # DU-Container-Monitor
-<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen.jpg" />
+<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen_v2.jpg" />
 
 <b>OVERVIEW</b><br>
 This code is destined to Dual Universe game.<br>
@@ -86,7 +86,7 @@ Activate at parameters (UseDoors), and at the final function at System/start, ed
 
 If you want you could format first screen with 4 columns. You could use this setting if you are not planning to use any container hub over the screen. Just uncheck "UseContainerHub" at parameters, and reload board.
 
-<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen_nohubs.jpg" />
+<img src="https://github.com/carmopereira/DU-Container-Monitor/blob/main/main_screen_nohubs_v2.jpg" />
 
 -----------------------------
 
