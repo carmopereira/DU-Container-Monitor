@@ -122,6 +122,9 @@ v1.8 17 Nov 2020<br>
 Credits
 carmopereira
 
+<a href='https://ko-fi.com/Q5Q32RBN6' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
+
 A big thanks to Jericho :) Your help is gold
 
 NOTE: Any issue, please contact carmo#1590 at Discord or at DU_CONTAINER_HUD channel on DU Open Source Initiative Discord Server https://discord.gg/tBteJZSQxe
