@@ -1,0 +1,650 @@
+-- FACTORY HUD v1.9 by carmo
+-- Any questions please contact carmo#1590 on discord
+-- THIS CODE NEEDS TO BE PLACED ON A MAIN BOARD AND DISPLAY SCREEN.
+
+-----------------
+-- SYSTEM VARS --
+-----------------
+local version = 1.9
+
+---------------
+-- USER VARS --
+---------------
+local ContainerLCapacity = 153600 --export
+local ContainerMCapacity = 64000 --export
+local ContainerSCapacity = 9600 --export
+local ContainerXSCapacity = 1200 --export
+local Percentage_RED = 10 --export
+local Percentage_GREEN = 60 --export
+local UseContainerHubs = false --export
+local UseDoors = false --export
+local DoorUsers = {'user1', 'user2', 'user3'}
+-- username array like {'user1', 'user2', 'CaseSensitive'}
+local showHudWidget = false --export
+
+-----------------
+-- USER CONFIG --
+-----------------
+-- LIST OF ORE/PURES:
+-- "HEMATITE","IRON","BAUXITE","ALUMINIUM","COAL","CARBON","QUARTZ","SILICON"
+-- "LIMESTONE","CALCIUM","MALACHITE","COPPER","NATRON","SODIUM","CHROMITE","CHROMIUM","ACANTHITE"
+-- "SILVER","PYRITE","SULFUR","PETALITE","LITHIUM","GARNIERITE","NICKEL","GOLDNUGGETS","GOLD"
+-- "CRYOLITE","FLUORINE","COBALTITE","COBALT","KOLBECKITE","SCANDIUM","RHODONITE","MANGANESE"
+-- "COLUMBITE","NIOBIUM","VANADINITE","VANADIUM","ILMENITE","TITANIUM"
+-- EXTRA MATERIALS TO USE: "OXYGEN", "HYDROGEN", "WARPCELL"
+-- On this next arrays you will place witch order you like
+-- Read always left to right, then next line.
+-- YOU CAN SET "EMPTY" if you need a blank space
+
+local SCREENA = {"HEMATITE", "IRON", "BAUXITE", "ALUMINIUM", "COAL", "CARBON", "QUARTZ", "SILICON", "LIMESTONE", "CALCIUM",
+    "MALACHITE", "COPPER", "NATRON", "SODIUM", "CHROMITE", "CHROMIUM", "ACANTHITE", "SILVER", "PYRITE", "SULFUR"}
+
+local SCREENB = {"PETALITE", "LITHIUM", "GARNIERITE", "NICKEL", "GOLDNUGGETS", "GOLD", "CRYOLITE", "FLUORINE",
+    "COBALTITE", "COBALT", "KOLBECKITE", "SCANDIUM", "RHODONITE", "MANGANESE", "COLUMBITE", "NIOBIUM", "VANADINITE",
+    "VANADIUM", "ILMENITE", "TITANIUM"}
+
+-------------------------
+-- AUXILIARY FUNCTIONS --
+-------------------------
+function roundint(x)
+    return x >= 0 and math.floor(x + 0.5) or math.ceil(x - 0.5)
+end
+
+function round(value)
+    local x = math.abs(value)
+    if math.type(x) == "float" then
+        return utils.round(x, 0.1)
+    else
+        return x
+    end
+end
+
+function split(s, sep)
+    local fields = {}
+    local sep = sep or " "
+    local pattern = string.format("([^%s]+)", sep)
+    string.gsub(s, pattern, function(c)fields[#fields + 1] = c end)
+    return fields
+end
+
+local function hasValue(s)
+    if s == nil or s == '' then return "empty"
+    else return s end
+end
+
+function print_r(arr, indentLevel)
+    local str = ""
+    local indentStr = "#"
+    
+    if (indentLevel == nil) then
+        system.print(print_r(arr, 0))
+        return
+    end
+    
+    for i = 0, indentLevel do
+        indentStr = indentStr .. "\t"
+    end
+    
+    for index, value in pairs(arr) do
+        if type(value) == "table" then
+            str = str .. indentStr .. index .. ": \n" .. print_r(value, (indentLevel + 1))
+        else
+            str = str .. indentStr .. index .. ": " .. value .. "\n"
+        end
+    end
+    return str
+end
+
+function arraylength(T)
+    local count = 0
+    if T == nil then return 0
+    else
+        for _ in pairs(T) do count = count + 1 end
+        return count
+    end
+end
+
+function getFromArray(array, position)
+    u = ""
+    for i, j in pairs(array) do u = j[position] end
+    --print_r(array)
+    return u
+end
+
+----------------
+-- CORE STUFF --
+----------------
+core = nil
+dbank = nil
+for slot_name, slot in pairs(unit) do
+    if
+        type(slot) == "table"
+        and type(slot.export) == "table"
+        and slot.getElementClass
+    then
+        if slot.getElementClass():lower():find("coreunit") then
+            core = slot
+        elseif
+            slot.getElementClass():lower():find("databank") then
+            dbank = slot
+        end
+    end
+end
+
+containersIdList = {}
+if core ~= nil then
+    local elementsIdList = core.getElementIdList()
+    for _, id in pairs(elementsIdList) do
+        local elementType = core.getElementTypeById(id):lower()
+        if elementType:find("container") then
+            local name = core.getElementNameById(id)
+            if string.match(name, "CH_") or string.match(name, "C_") then
+                local temp = split(name, "_")
+                local tq = string.match(temp[2], "%d+")
+                --system.print([["ID: "]] .. id .. [[", TEMP1: "]] .. temp[1] .. [[", TEMP 2,1: "]] .. hasValue(tq) .. [[", TEMP 2,2: "]] .. string.sub(temp[2], -1) .. [[", TEMP3: "]] .. temp[3] .. [[", TEMP4: "]] .. hasValue(temp[4]))
+                table.insert(containersIdList, {id, temp[1], string.match(temp[2], "%d+"), string.sub(temp[2], -1), temp[3], hasValue(temp[4])})
+            --1: id, 2: type, 3: containercount, 4: containersize, 5: material, 6: description
+            end
+        end
+    end
+end
+
+function checkDB()
+    dbVersion = dbank.getFloatValue("version")
+    if dbVersion == nil then return nil
+    elseif dbVersion < version then return "upgrade"
+    else return "noupgrade" end
+end
+
+function saveDB()
+    dbank.setIntValue("dummy", 1)
+    dbank.setFloatValue("version", version)
+    dbank.setIntValue("ContainerLCapacity", ContainerLCapacity)
+    dbank.setIntValue("ContainerMCapacity", ContainerMCapacity)
+    dbank.setIntValue("ContainerSCapacity", ContainerSCapacity)
+    dbank.setIntValue("ContainerXSCapacity", ContainerXSCapacity)
+    dbank.setIntValue("Percentage_RED", Percentage_RED)
+    dbank.setIntValue("Percentage_GREEN", Percentage_GREEN)
+    if UseContainerHubs then
+        dbank.setIntValue("UseContainerHubs", 1)
+    else
+        dbank.setIntValue("UseContainerHubs", 0)
+    end
+    if UseDoors then
+        dbank.setIntValue("UseDoors", 1)
+    else
+        dbank.setIntValue("UseDoors", 0)
+    end
+    if showHudWidget then
+        dbank.setIntValue("showHudWidget", 1)
+    else
+        dbank.setIntValue("showHudWidget", 0)
+    end
+end
+
+function readDB()
+    if dbank.getIntValue("dummy") == 1 then
+        ContainerLCapacity = dbank.getIntValue("ContainerLCapacity")
+        ContainerMCapacity = dbank.getIntValue("ContainerMCapacity")
+        ContainerSCapacity = dbank.getIntValue("ContainerSCapacity")
+        ContainerXSCapacity = dbank.getIntValue("ContainerXSCapacity")
+        Percentage_RED = dbank.getIntValue("Percentage_RED")
+        Percentage_GREEN = dbank.getIntValue("Percentage_GREEN")
+        
+        if dbank.getIntValue("UseContainerHubs") == 1 then
+            UseContainerHubs = true
+        else
+            UseContainerHubs = false
+        end
+        if dbank.getIntValue("UseDoors") == 1 then
+            UseDoors = true
+        else
+            UseDoors = false
+        end
+        if dbank.getIntValue("showHudWidget") == 1 then
+            showHudWidget = true
+        else
+            showHudWidget = false
+        end
+    end
+end
+
+function goDB()
+    if dbank ~= nil then
+        system.print("DATABANK FOUND")
+        system.print("SCRIPT LOAD OK. CHECKING DB VERSION")
+        
+        if checkDB() == nil then
+            system.print("UPGRADE DETECTED. FIRST RUN? LOADING KICKSTART")
+            unit.setTimer("kickstart", 1)
+        elseif checkDB() == "upgrade" then
+            readDB()
+            system.print("UPGRADE DETECTED. USER CONFIG LOADED. LOADING KICKSTART")
+            unit.setTimer("kickstart", 1)
+        else
+            readDB()
+            system.print("NO UPGRADE NEEDED. SAME VERSION. LOADING KICKSTART")
+            unit.setTimer("kickstart", 1)
+        end
+    else
+        system.print("NO DATABANK FOUND. LOADING KICKSTART")
+        unit.setTimer("kickstart", 1)
+    end
+end
+----------
+-- HTML --
+----------
+local html_css
+if UseContainerHubs then
+    html_css = [[
+    <style> 
+    .table {background-color:none; height:99vh; margin:auto; padding:0; position:relative; width:98vw} 
+    .column_1_2 {background-color:none; position:absolute; left:20px; height:100%; width:45vw} 
+    .column_2_2 {background-color:none; position:absolute; right:0; height:100%; width:45vw} 
+    .row {background-color:none; height:9.8vh; border:0px grey solid; padding-left:35%; width:99%} 
+    .rowinfo {background-color:none; height:9.8vh; width:99%; text-align: center; font-size: 1.4vw;font-weigh:300; padding-top:6px}
+    .name {background-color:none; padding-left:0px; line-height:5vh; font-size: 4vh; display:inline-block; width:70%}
+    .progressbar {background-color:green; position:relative; float:right; bottom:2px; min-height:1vh; height:1vh; right:0; min-width:1vw}
+    .daysavailable {width:100%; background-color:none; position:relative; float:left; text-align:right; bottom:2px; height:2vh;font-size:12px}
+    .percentage {background-color:none; font-size: 5vh; line-height: 5vh; width:8.5vw; top: 0; right: 0; text-align:right; display:inline-block} 
+    .desc {font-size:1.5vw; background-color: none; width: 98%; display: inline-block;}
+    .info {font-size:1.5vw; background-color: none; width: 30%; display: inline-block; right: 5px; position: absolute; text-align: right;}
+    </style>
+    ]]
+
+else html_css = [[ 
+    <style> 
+    .table {background-color:none; height:99vh; margin:auto; padding:0; position:relative; width:50vw; display:inline-block} 
+    .column_1_2 {background-color:none; position:absolute; height:100%; width:25vw} 
+    .column_2_2 {background-color:none; position:absolute; right:0; height:100%; width:25vw}
+    .row {background-color:none; height:9.8vh; width:99%; padding: 0 8px} 
+    .rowinfo {background-color:none; height:9.8vh; width:99%; text-align: center; font-size: 1.4vw;font-weigh:300; padding-top:6px}
+    .name {background-color:none; padding-left:0px; line-height:5vh; font-size: 3vh; display:inline-block; width:64%} 
+    .progressbar {background-color:green; position:relative; float:right; bottom:2px; min-height:1vh; height:1vh; right:0; min-width:1vw}
+    .daysavailable {width:100%; background-color:none; position:relative; float:left; text-align:right; bottom:2px; height:2vh;font-size:12px}
+    .percentage {background-color:none; font-size: 4vh; line-height: 5vh; width:36%; top: 0; right: 0px; text-align:right; display:inline-block; padding:0}
+    .desc {font-size:1.2vw; background-color: none; width: 98%; display: inline-block;}
+    .info {font-size:1.2vw; background-color: none; width: 50%; display: inline-block; right: 10px; position: absolute; text-align: right;}
+    </style>   
+    ]]
+
+end
+
+css_loading = [[
+    <style> 
+    .wrapper{background-color:none;color:white;font-size:2vw;}
+    .valign > div{border:dotted 1px white;padding:20px 20px;}
+    .wrapper {position: absolute;width: 100%;height: 100%;}
+    .valign {width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;}
+    </style>
+]]
+
+local material_readout_top = [[<div class="table"><div class="column_1_2">]]
+
+function material_readout_cell(name)
+    x = {}
+    --system.print("NAME: "..hasValue(name))
+    if name == nil then
+        html = [[<div class="row"><div class="name"></div><div class="percentage"></div><div class="progressbar" style="width:0%; background-color:pink">&nbsp;</div></div>]]
+    else
+        --system.print(name)
+        x = getMaterial(name)
+        --system.print("ENTRA 1")
+        if next(x) == nil then
+            --system.print("array vazio")
+            html = [[<div class="rowinfo">PLEASE CONNECT<br>]] .. name .. [[</div>]]
+        else
+            percentage = getFromArray(x, 9)
+            description = getFromArray(x, 6)
+            if description == "empty" then description = "" end
+            quantity = getFromArray(x, 8)
+            totalcontainerqtdinlitre = getFromArray(x, 10)
+            --print_r(x)
+            --system.print("MATERIAL: "..name.." | %: "..percentage)
+            html = [[<div class="row"><div class="name">]] .. _G[name][1] .. [[</div><div class="percentage">]] .. percentage .. [[%</div><div class="progressbar" style="width:]] .. percentage .. [[%; background-color:]] .. progresscolor(percentage) .. [[">&nbsp;</div>
+            <div class="desc">]]
+                .. description .. [[</div><div class="info">]] .. litreParse(quantity, totalcontainerqtdinlitre) .. [[</div></div>]]
+        --system.print(progresscolor(percentage))
+        end
+    end
+    return html
+end
+
+local material_readout_middle = [[</div><div class="column_2_2">]]
+local material_readout_bottom = [[</div></div>]]
+
+function progresscolor(percentage)
+    if tonumber(percentage) then
+        color = ""
+        if (percentage <= Percentage_RED) then
+            color = "red"
+        elseif (percentage > Percentage_RED) and (percentage < Percentage_GREEN) then
+            color = "yellow"
+        else
+            color = "green"
+        end
+        return color
+    else
+        return "pink"
+    end
+end
+
+function litreParse(litre, total)
+    size = ""
+    if total < 1000 then
+        size = "L"
+    elseif total < 1000000 then
+        total = total / 1000
+        size = "kL"
+    else
+        total = total / 1000000
+        size = "kt"
+    end
+    
+    if litre < 1000 then return string.format("%.1f", litre) .. "/" .. string.format("%.1f", total) .. size
+    elseif litre < 1000000 then
+        litre = litre / 1000
+        return string.format("%.1f", litre) .. "/" .. string.format("%.1f", total) .. size
+    else
+        litre = litre / 10000
+        total = total / 1000
+        return string.format("%.1f", litre) .. "/" .. string.format("%.1f", total) .. size
+    end
+end
+
+--------------------
+-- MATERIAL STUFF --
+--------------------
+-- VARIABLE = {Name that will be displayed on screen, unit mass, unit volume if exists}
+function createMaterials()
+    -- T1
+    HEMATITE = {"Hematite", 5.04}
+    IRON = {"Iron", 7.85}
+    BAUXITE = {"Bauxite", 1.2811}
+    ALUMINIUM = {"Aluminium", 2.7}
+    QUARTZ = {"Quartz", 2.65}
+    SILICON = {"Silicon", 2.33}
+    COAL = {"Coal", 1.35}
+    CARBON = {"Carbon", 2.27}
+    -- T2
+    LIMESTONE = {"Limestone", 2.711}
+    CALCIUM = {"Calcium", 1.55}
+    MALACHITE = {"Malachite", 4}
+    COPPER = {"Copper", 8.96}
+    NATRON = {"Natron", 1.55}
+    SODIUM = {"Sodium", 0.97}
+    CHROMITE = {"Chromite", 4.54}
+    CHROMIUM = {"Chromium", 7.19}
+    -- T3
+    PYRITE = {"Pyrite", 5.01}
+    SULFUR = {"Sulfur", 1.82}
+    PETALITE = {"Petalite", 2.41}
+    LITHIUM = {"Lithium", 0.53}
+    ACANTHITE = {"Acanthite", 7.2}
+    SILVER = {"Silver", 10.49}
+    GARNIERITE = {"Garnierite", 2.6}
+    NICKEL = {"Nickel", 8.91}
+    -- T4
+    GOLDNUGGETS = {"Gold Nuggets", 19.3}
+    GOLD = {"Gold", 19.3}
+    CRYOLITE = {"Cryolite", 2.95}
+    FLUORINE = {"Fluorine", 1.7}
+    COBALTITE = {"Cobaltite", 6.33}
+    COBALT = {"Cobalt", 8.9}
+    KOLBECKITE = {"Kolbeckite", 2.37}
+    SCANDIUM = {"Scandium", 2.98}
+    -- T5
+    RHODONITE = {"Rhodonite", 3.76}
+    MANGANESE = {"Manganese", 7.21}
+    COLUMBITE = {"Columbite", 5.38}
+    NIOBIUM = {"Niobium", 8.57}
+    VANADINITE = {"Vanadinite", 6.95}
+    VANADIUM = {"Vanadium", 6}
+    ILMENITE = {"Ilmenite", 4.55}
+    TITANIUM = {"Titanium", 4.51}
+    -- OTHER
+    OXYGEN = {"Oxygen", 1}
+    HYDROGEN = {"Hydrogen", 0.07}
+    WARPCELL = {"Warpcell", 100}
+    -- STUFF
+    AILERONM = {"Aileron M", 3410, 1238.4}
+end
+
+function getQuantity(material, materialmass)
+    quantity = nil
+    quantity = roundint(materialmass / (_G[material][2]))
+    return quantity
+end
+
+function createMaterialArray(material)
+    arrayX = {}
+    for i, j in pairs(containersIdList) do
+        if j[5] == material then
+            if j[2] == "CH" or j[2] == "C" and j[6] == "empty" then
+                --system.print("id: "..j[1]..", type: "..j[2]..", quantity: "..j[3]..", size: "..j[4]..", material: "..j[5]..", description: "..j[6])
+                table.insert(arrayX, {j[1], j[2], j[3], j[4], j[5], j[6]})
+            end
+        end
+    end
+    return arrayX
+end
+
+function getContainerCapacity(size)
+    capacity = 0
+    if size == "L" then capacity = ContainerLCapacity
+    elseif size == "M" then capacity = ContainerMCapacity
+    elseif size == "S" then capacity = ContainerSCapacity
+    elseif size == "XS" then capacity = ContainerXSCapacity
+    else
+        capacity = 0
+    end
+    return capacity
+end
+
+function getContainerMass(size)
+    mass = 0
+    if size == "L" then mass = 14842.7
+    elseif size == "M" then mass = 7421.35
+    elseif size == "S" then mass = 1281.31
+    elseif size == "XS" then mass = 229.09
+    else
+        mass = 0
+    end
+    return mass
+end
+
+function calculateMaterial(arrayx)
+    containermass = 0
+    percentage = 0
+    arrayY = {}
+    for i, j in pairs(arrayx) do
+        if j[2] == "CH" then
+            
+            containermass = core.getElementMassById(j[1]) - 55.8 -- 55.8 is the hub mass
+            if containermass > 0 then
+                quantity = getQuantity(j[5], containermass)
+                
+                if _G[j[5]][3] ~= nil then
+                    percentage = containerPercentage(quantity * _G[j[5]][3], getContainerCapacity(j[4]) * j[3])
+                else
+                    percentage = containerPercentage(quantity, getContainerCapacity(j[4]) * j[3])
+                end
+                
+                totalcontainerquantityinlitre = getContainerCapacity(j[4]) * j[3]
+                --system.print("ore: "..j[5].." | QTD: "..quantity.." | %: "..percentage)
+                table.insert(arrayY, {j[1], j[2], j[3], j[4], j[5], j[6], containermass, quantity, percentage, totalcontainerquantityinlitre})
+            else
+                --system.print("MATERIAL: "..j[5].." | EMPTY")
+                end
+        --system.print("FODASSE ore: "..j[5].." | id: "..j[1].." | massa: "..hubmass)
+        elseif j[2] == "C" then
+            
+            --system.print("nome é: "..j[4] .."size é: " .. core.getElementMassById(j[1]) .. " e o container vazio: " .. getContainerMass(j[4]))
+            containermass = core.getElementMassById(j[1]) - getContainerMass(j[4])
+            
+            if containermass > 0 then
+                quantity = getQuantity(j[5], containermass)
+                
+                if _G[j[5]][3] ~= nil then
+                    percentage = containerPercentage(quantity * _G[j[5]][3], getContainerCapacity(j[4]))
+                    quantity = quantity * _G[j[5]][3]
+                else
+                    percentage = containerPercentage(quantity, getContainerCapacity(j[4]))
+                end
+                
+                totalcontainerquantityinlitre = getContainerCapacity(j[4])
+                
+                table.insert(arrayY, {j[1], j[2], j[3], j[4], j[5], j[6], containermass, quantity, percentage, totalcontainerquantityinlitre})
+            else
+                end
+        end
+    end
+    --1: id, 2: type, 3: containercount, 4: containersize, 5: material, 6: description, 7: mass, 8: quantity, 9: percentage, 10: totalcontainerquantityinlitre
+    --system.print("o size do array é: " .. arraylength(arrayY))
+    if arraylength(arrayY) > 1 then
+        --system.print("o array é do material: ".. getFromArray(arrayY, 5))
+        arrayZ = {}
+        v1 = 999999999
+        v2 = "C"
+        v3 = 0
+        v4 = "SUM"
+        v5 = ""
+        v6 = ""
+        v7 = 0
+        v8 = 0
+        v9 = 0
+        v10 = 0
+        for i, j in pairs(arrayY) do
+            v5 = j[5]
+            v7 = v7 + getContainerCapacity(j[4])
+            v8 = v8 + j[8]
+            --system.print("v8: "..v8)
+            v10 = v10 + j[10]
+        end
+        v9 = containerPercentage(v8, v7)
+        table.insert(arrayZ, {v1, v2, v3, v4, v5, v6, v7, v8, v9, v10})
+    end
+    
+    if arraylength(arrayZ) > 0 then return arrayZ
+    else return arrayY end
+end
+
+function containerPercentage(materialqtd, containercapacity)
+    if materialqtd ~= nil then
+        local x = materialqtd * 100 / containercapacity
+        local y = math.floor(x + .5)
+        if y - x < 0.05 then
+            return roundint(x)
+        else
+            return round(x)
+        end
+    else
+        return 666
+    end
+end
+
+function getMaterial(material)
+    step1 = {}
+    step2 = {}
+    arrayZ = nil
+    -- STEP 1
+    -- create array with list of CH or C that contain specific material
+    step1 = createMaterialArray(material)
+    
+    -- STEP 2
+    -- calculate mass, quantity, percentage
+    step2 = calculateMaterial(step1)
+    
+    -- RETURN FULL ARRAY
+    --print_r(step2)
+    return step2
+end
+
+----------------
+-- HTML STUFF --
+----------------
+function create_material_readout_screen_A()
+    html = html_css .. material_readout_top
+    for i = 1, 20 do if (i % 2 ~= 0) then html = html .. material_readout_cell(SCREENA[i]) end end
+    html = html .. material_readout_middle
+    for i = 1, 20 do if (i % 2 == 0) then html = html .. material_readout_cell(SCREENA[i]) end end
+    html = html .. material_readout_bottom
+    if not UseContainerHubs then
+        html = html .. material_readout_top
+        for i = 1, 20 do if (i % 2 ~= 0) then html = html .. material_readout_cell(SCREENB[i]) end end
+        html = html .. material_readout_middle
+        for i = 1, 20 do if (i % 2 == 0) then html = html .. material_readout_cell(SCREENB[i]) end end
+        html = html .. material_readout_bottom
+    end
+    return html
+end
+
+function create_material_readout_screen_B()
+    html = html_css .. material_readout_top
+    for i = 1, 20 do if (i % 2 ~= 0) then html = html .. material_readout_cell(SCREENB[i]) end end
+    html = html .. material_readout_middle
+    for i = 1, 20 do if (i % 2 == 0) then html = html .. material_readout_cell(SCREENB[i]) end end
+    html = html .. material_readout_bottom
+    return html
+end
+
+function clearSCREEN()
+    -- CLEAR SCREENS
+    SCREEN_A.clear()
+    if SCREEN_B ~= nil then SCREEN_B.clear() end
+end
+
+function reload()
+    clearSCREEN()
+    
+    -- SCREEN A
+    html = [[<div style="width:100vw"><div style="margin-top: 10px;padding: 0px;width: 100vw;display: inline-block;">]] .. create_material_readout_screen_A() .. [[</div></div>]]
+    SCREEN_A.setHTML(html)
+    
+    -- SCREEN B
+    if SCREEN_B ~= nil then
+        html = [[<div style="width:100vw"><div style="margin-top:10px;padding:0px;width:100vw;display:inline-block;">]] .. create_material_readout_screen_B() .. [[</div></div>]]
+        SCREEN_B.setHTML(html)
+    end
+end
+
+function warmup()
+    system.print("WARMUP")
+    
+    -- SCREEN A
+    html = css_loading .. [[<div class="wrapper"><div class="valign"><div>LOADING</div></div></div>]]
+    SCREEN_A.setHTML(html)
+    
+    -- LOAD SCREEN B LOADING
+    if SCREEN_B ~= nil then SCREEN_B.setHTML(html) end
+end
+
+function door()
+    local playerId = unit.getMasterPlayerId()
+    local playerName = system.getPlayerName(playerId)
+    local t = doorUsers -- username array like {'user1', 'user2', 'CaseSensitive'}
+    local function has_value(tab, val)
+        for index, value in ipairs(tab) do
+            if value == val then
+                return true
+            end
+        end
+        return false
+    end
+    --system.print("Hello " .. playerName .. " : " .. playerId .. "!")
+    if has_value(t, playerName) then
+        if DOOR1 ~= nil then DOOR1.activate() end
+        if DOOR2 ~= nil then DOOR2.activate() end
+    --someSCREEN.setCenteredText("WELCOME" .. playerName)
+    else
+        system.print('PERMISSION DENIED')
+    end
+end
+
+-- STARTUP FACTORY
+warmup()
+createMaterials()
+goDB()
+
+if not showHudWidget then unit.hide() end
+if UseDoors then door() end

@@ -7,32 +7,36 @@ This is a Container monitor for pure and ore materials. It can be used to monito
 <br>
 This HUD was designed for a Large Transparent Screen(or two). Each screen can gather 20 materials. It uses a Zone detector to turn up every board for optimal CPU usage.<br>
 <br>
-<b>HOW TO SETUP HUD:</b>
-
-1. Place Main board
-2. Place a Transparent Screen L or similar
-3. Place a Relay
-4. Deploy a Zone Detector and connect it to the Relay
-5. Add a Databank and connect it to the board. (Databank is used to save User Config to ease upgrades)
-
 -----------------------------
-
-<b>MAIN BOARD:</b><br>
+<br>
+<b>HOW TO SETUP HUD:</b><br>
 Slot1: CORE<br>
 Slot2: SCREEN_A<br>
 Slot3-6: SCREEN_B (optional) / DOOR1 (optional) / DOOR2 (optional) / Databank (optional - no need to rename it)
 <br>
-<b>INSTRUCTIONS:</b>
-1. Link CORE (no need to rename slot to CORE because it will autodetect)
-2. Link SCREEN_A and SCREEN_B if needed (2nd screen is optional)
-3. Copy minified code from Main Board file, and paste it under advanced options on board options.
-NOTE: when you copy paste the code, it will rename slot1 to CORE and slot2 to SCREEN_A (if you are using a second screen, just neeed to rename the slot to SCREEN_B)
-4. Link Relay to board and detector zone or manual button for example (optional) (you can always turn the board manually)
-5. Edit board parameters (setup refresh rate in seconds, containers default space, percentage min and max for red and green incicators)
-6. For every ContainerHub you will need to rename it to: CH_1L_ACANTHITE
-7. Link Databank (no need to rename slot to DB because it will autodetect)
 <br>
-<b>Label:</b><br>
+<br>
+<b>INSTRUCTIONS:</b>
+<br>
+1. Place Main board<br>
+2. Place a Transparent Screen L or similar<br>
+3. Link CORE (no need to rename slot to CORE because it will autodetect)<br>
+4. Link SCREENS<br>
+5. Copy minified code from Main Board file, and paste it under advanced options on board options.<br>
+NOTE: when you copy paste the code, it will rename automatically slot1 to CORE and slot2 to SCREEN_A (if you are using a second screen, just neeed to rename the other slot to SCREEN_B)<br>
+<br>
+6. Edit Lua script and check if you have your screen name right. SCREEN_A for first, and if you want a 2nd one name it SCREEN_B<br>
+7. Check parameters (setup refresh rate in seconds, containers default litre space, min and max percentage for red and green indicators)<br>
+8. Check Labeling Instruction below to know how to rename containers/hubs<br>
+<br>
+OPTIONAL<br>
+9. Link Databank (no need to rename slot to DB because it will autodetect)<br>
+<br>
+If you want to start the board with your presence<br>
+10. Link Relay to board and detector zone or manual button for example (optional) (you can always turn the board manually)<br>
+<br>
+<br>
+<b>Labeling Instructions:</b><br>
 CH stands for ContainerHub<br>
 C stands for Container<br>
 1 for quantity of containers<br>
@@ -55,7 +59,7 @@ local SCREENA = {"HEMATITE","IRON","BAUXITE","ALUMINIUM","COAL","CARBON","QUARTZ
 local SCREENB = {"PETALITE","LITHIUM","GARNIERITE","NICKEL","GOLDNUGGETS","GOLD","CRYOLITE","FLUORINE",<br> "COBALTITE","COBALT","KOLBECKITE","SCANDIUM","RHODONITE","MANGANESE","COLUMBITE","NIOBIUM","VANADINITE", "VANADIUM","ILMENITE","TITANIUM"}<br>
 <br>
 <br>
-This will define the order that materials are placed on screen. If you need an empty space use m0. You can also use m41 for oxygen, m42 for hydrogen and m43 for warpcells<br>
+This will define the order that materials are placed on screen. If you need an empty space use EMPTY. You can also use OXYGEN, HYDROGEN or WARPCELL<br>
 Please use it wisely.<br>
 <br>
 -- LIST OF ORE/PURES: <br>
@@ -113,8 +117,15 @@ v1.7 17 Nov 2020<br>
 <br>
     Thanks to: Jericho,Archaegeo,Kumare,Tricky Trixy,-CML- Schoff for all input.<br>
 v1.8 17 Nov 2020<br>
-	Container "C_" now working as intended. You can use either C_L_IRON or C_1L_IRON (no meaning to say that the "one" container is 1.)
-	If you name 2 containers with the same ore/pure it will sum values of the two (or more)
+	Container "C_" now working as intended. You can use either C_L_IRON or C_1L_IRON (no meaning to say that the "one" container is 1.)<br>
+	If you name 2 containers with the same ore/pure it will sum values of the two (or more)<br>
+	<br>
+v1.9 01 Dec 2020<br>
+	Refactoring<br>
+	Added capacity to handle items that have litres diferent than ore/pures.<br>
+	Fixed percentages with .333333 or .666666 infinite readout.<br>
+	Now the screen shows item name instead of the variable name. Now we can all have "Gold Nuggets"<br>
+	Improved ReadME info to help new players<br>
 <br>
 <br>
 -----------------------------
